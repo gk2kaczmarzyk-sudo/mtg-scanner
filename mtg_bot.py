@@ -2,7 +2,6 @@ import os
 import json
 import time
 import re
-import random
 from urllib.parse import urljoin
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import urllib3
@@ -20,6 +19,7 @@ except ImportError:
 # ================= KONFIGURACJA =================
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN", "")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
+SCRAPER_API_KEY = os.getenv("SCRAPER_API_KEY", "").strip()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SEEN_FILE = os.path.join(BASE_DIR, "seen_offers.json")
@@ -300,62 +300,6 @@ OUT_OF_STOCK_WORDS = [
 # ================================================
 
 
-def fetch_working_pl_eu_proxies(max_working=8):
-    """Pobiera darmowe proxy z Polski (priorytet) i pobliskich krajów UE oraz testuje ich działanie."""
-    candidates = []
-    sources = [
-        "https://api.proxyscrape.com/v2/?request=displayproxies&protocol=http&timeout=5000&country=PL&ssl=all&anonymity=all",
-        "https://api.proxyscrape.com/v2/?request=displayproxies&protocol=http&timeout=4000&country=DE,CZ,SK,LT&ssl=yes&anonymity=all",
-    ]
-    for src in sources:
-        try:
-            r = requests.get(src, timeout=8)
-            if r.status_code == 200:
-                lines = [line.strip() for line in r.text.splitlines() if ":" in line]
-                # Najpierw polskie (z pierwszego źródła), potem losowa próbka z UE
-                if "country=PL" in src:
-                    candidates.extend(lines[:25])
-                else:
-                    random.shuffle(lines)
-                    candidates.extend(lines[:20])
-        except Exception:
-            continue
-
-    # Usuń duplikaty zachowując kolejność (PL na początku)
-    unique_candidates = list(dict.fromkeys(candidates))
-    if not unique_candidates:
-        return []
-
-    def test_proxy(proxy_addr):
-        proxy_dict = {"http": f"http://{proxy_addr}", "https": f"http://{proxy_addr}"}
-        try:
-            res = requests.get(
-                "https://planeswalker.pl",
-                proxies=proxy_dict,
-                timeout=6,
-                verify=False,
-                headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/131.0.0.0"},
-            )
-            if res.status_code == 200 and len(res.text) > 1000:
-                return proxy_addr
-        except Exception:
-            pass
-        return None
-
-    working = []
-    with ThreadPoolExecutor(max_workers=12) as ex:
-        futures = [ex.submit(test_proxy, p) for p in unique_candidates]
-        for fut in as_completed(futures):
-            ok_proxy = fut.result()
-            if ok_proxy:
-                working.append(ok_proxy)
-                if len(working) >= max_working:
-                    break
-
-    print(f"Znaleziono działających proxy PL/EU: {len(working)} (z {len(unique_candidates)} przetestowanych)")
-    return working
-
-
 def load_seen_offers():
     if os.path.exists(SEEN_FILE):
         with open(SEEN_FILE, "r", encoding="utf-8") as f:
@@ -528,8 +472,8 @@ def create_http_session():
     return session
 
 
-def fetch_direct_or_proxy(session, url, proxy_pool, timeout=10):
-    """Próbuje pobrać stronę bezpośrednio, a przy blokadzie (403/timeout) przełącza na proxy PL/EU."""
+def fetch_direct_or_scraperapi(session, url, timeout=10):
+    """Najpierw łączy się bezpośrednio za darmo; przy blokadzie IP USA używa ScraperAPI (PL)."""
     try:
         if HAS_CLOUDSCRAPER:
             res = session.get(url, timeout=timeout)
@@ -540,71 +484,63 @@ def fetch_direct_or_proxy(session, url, proxy_pool, timeout=10):
     except Exception:
         pass
 
-    if not proxy_pool:
+    if not SCRAPER_API_KEY:
         return None, None
 
-    # Spróbuj maksymalnie 2 losowych proxy z puli
-    for proxy_addr in random.sample(proxy_pool, min(2, len(proxy_pool))):
-        proxy_dict = {"http": f"http://{proxy_addr}", "https": f"http://{proxy_addr}"}
-        try:
-            res = requests.get(
-                url,
-                proxies=proxy_dict,
-                timeout=12,
-                verify=False,
-                headers={
-                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/131.0.0.0",
-                    "Accept-Language": "pl-PL,pl;q=0.9",
-                },
-            )
-            if res.status_code == 200:
-                return res, "proxy"
-        except Exception:
-            continue
+    try:
+        api_params = {
+            "api_key": SCRAPER_API_KEY,
+            "url": url,
+            "country_code": "pl",
+        }
+        res = requests.get("https://api.scraperapi.com/", params=api_params, timeout=35)
+        if res.status_code == 200:
+            return res, "scraperapi"
+        print(f"[ScraperAPI] Status {res.status_code} dla {url}")
+    except Exception as e:
+        print(f"[ScraperAPI BŁĄD] {url}: {e}")
 
     return None, None
 
 
-def scan_single_store(store, proxy_pool):
+def scan_single_store(store):
     store_name = store["name"]
     base_url = store["base_url"]
     require_magic = store.get("require_magic_word", False)
     session = create_http_session()
     store_responded = False
-    used_proxy = False
+    used_scraperapi = False
     store_deals = []
 
     for url in store["urls"]:
-        res, mode = fetch_direct_or_proxy(session, url, proxy_pool, timeout=10)
+        res, mode = fetch_direct_or_scraperapi(session, url, timeout=10)
         if not res or res.status_code != 200:
             continue
 
         store_responded = True
-        if mode == "proxy":
-            used_proxy = True
+        if mode == "scraperapi":
+            used_scraperapi = True
         deals = parse_store_page(store_name, base_url, res.text, require_magic)
         store_deals.extend(deals)
         time.sleep(0.3)
 
-    return store_name, store_responded, used_proxy, store_deals
+    return store_name, store_responded, used_scraperapi, store_deals
 
 
 def scan_polish_stores(seen_offers):
     new_found = 0
     working_direct = []
-    working_proxy = []
+    working_api = []
     failed_stores = []
     all_deals = []
 
-    proxy_pool = fetch_working_pl_eu_proxies(max_working=8)
-
-    with ThreadPoolExecutor(max_workers=6) as executor:
-        futures = [executor.submit(scan_single_store, store, proxy_pool) for store in POLISH_STORES]
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        futures = [executor.submit(scan_single_store, store) for store in POLISH_STORES]
         for future in as_completed(futures):
-            store_name, responded, used_proxy, deals = future.result()
+            store_name, responded, used_api, deals = future.result()
             if responded:
-                if used_proxy:
-                    working_proxy.append(store_name)
+                if used_api:
+                    working_api.append(store_name)
                 else:
                     working_direct.append(store_name)
                 all_deals.extend(deals)
@@ -629,31 +565,32 @@ def scan_polish_stores(seen_offers):
             new_found += 1
             time.sleep(0.5)
 
-    return new_found, sorted(working_direct), sorted(working_proxy), sorted(failed_stores)
+    return new_found, sorted(working_direct), sorted(working_api), sorted(failed_stores)
 
 
 def run_once():
-    print(f"Skanuję {len(POLISH_STORES)} polskich sklepów (z automatycznym proxy PL/EU)...")
+    mode_info = "z ScraperAPI PL" if SCRAPER_API_KEY else "bez klucza ScraperAPI"
+    print(f"Skanuję {len(POLISH_STORES)} polskich sklepów ({mode_info})...")
     seen = load_seen_offers()
-    found, direct_ok, proxy_ok, failed = scan_polish_stores(seen)
+    found, direct_ok, api_ok, failed = scan_polish_stores(seen)
     save_seen_offers(seen)
 
-    total_ok = len(direct_ok) + len(proxy_ok)
+    total_ok = len(direct_ok) + len(api_ok)
 
     if os.getenv("GITHUB_EVENT_NAME") == "workflow_dispatch":
         direct_list = ", ".join(direct_ok) if direct_ok else "brak"
-        proxy_list = ", ".join(proxy_ok) if proxy_ok else "brak"
+        api_list = ", ".join(api_ok) if api_ok else "brak"
         fail_list = ", ".join(failed) if failed else "brak"
         send_telegram_text(
             f"✅ <b>Skanowanie zakończone!</b>\n"
             f"🏪 Wynik: <b>{total_ok}/{len(POLISH_STORES)}</b>\n\n"
             f"🟢 <b>Bezpośrednio ({len(direct_ok)}):</b> {direct_list}\n\n"
-            f"🟡 <b>Odblokowane przez Proxy PL/EU ({len(proxy_ok)}):</b> {proxy_list}\n\n"
+            f"🇵🇱 <b>Odblokowane przez ScraperAPI PL ({len(api_ok)}):</b> {api_list}\n\n"
             f"🔴 <b>Niedostępne ({len(failed)}):</b> {fail_list}\n\n"
             f"🔥 <b>Nowych okazji:</b> {found}"
         )
 
-    print(f"Zakończono. Działają: {total_ok}/{len(POLISH_STORES)} (w tym {len(proxy_ok)} przez proxy) | Nowe okazje: {found}")
+    print(f"Zakończono. Działają: {total_ok}/{len(POLISH_STORES)} (w tym {len(api_ok)} przez ScraperAPI) | Nowe okazje: {found}")
 
 
 if __name__ == "__main__":
