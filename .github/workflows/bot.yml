@@ -1,0 +1,30 @@
+name: MTG Sealed Bot
+
+on:
+  repository_dispatch:
+    types: [scan]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check-deals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests beautifulsoup4 cloudscraper
+      - name: Run bot
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python mtg_bot.py
+      - name: Save seen offers
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add seen_offers.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update seen offers" && git pull --rebase && git push)
