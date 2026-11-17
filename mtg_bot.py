@@ -28,6 +28,28 @@ SEEN_FILE = os.path.join(BASE_DIR, "seen_offers.json")
 # z rozbiciem na konkretne talie Commander Deck dla każdego dodatku
 SET_PRICE_RULES = [
     {
+        "set_name": "Foundations",
+        "keywords": ["foundations"],
+        "prices": {
+            "play_booster": 16,
+            "play_box": 430,
+            "collector_booster": 115,
+            "collector_box": 1250,
+            "jumpstart_booster": 16,
+            "jumpstart_box": 340,
+            "bundle": 165,
+            "prerelease": 100,
+            "beginner_box": 105,
+            "starter_collection": 195,
+            "cmd_calling_all_angels": 105,
+            "cmd_keen_engineering": 105,
+            "cmd_wretched_ranks": 105,
+            "cmd_reign_of_dragons": 105,
+            "cmd_tramplesaurus_rex": 105,
+            "commander_generic": 105,
+        },
+    },
+    {
         "set_name": "Edge of Eternities",
         "keywords": ["edge of eternities"],
         "prices": {
@@ -216,9 +238,20 @@ COMMANDER_DECK_KEYWORDS = [
     (["landing party"], "cmd_landing_party"),
     (["federation fleet"], "cmd_federation_fleet"),
     (["klingon fury"], "cmd_klingon_fury"),
+    # Foundations
+    (["calling all angels"], "cmd_calling_all_angels"),
+    (["keen engineering"], "cmd_keen_engineering"),
+    (["wretched ranks"], "cmd_wretched_ranks"),
+    (["reign of dragons"], "cmd_reign_of_dragons"),
+    (["tramplesaurus rex"], "cmd_tramplesaurus_rex"),
+    
 ]
 
 PRODUCT_LABELS = {
+
+    "jumpstart_booster": "Jumpstart Booster",
+    "jumpstart_box": "Jumpstart Booster Box",
+    "starter_collection": "Starter Collection", 
     "play_booster": "Play Booster",
     "play_box": "Play Booster Box",
     "collector_booster": "Collector Booster",
@@ -230,6 +263,11 @@ PRODUCT_LABELS = {
     "beginner_box": "Beginner Box",
     "commander_generic": "Commander Deck (ogólny)",
     # Konkretne talie Commander
+    "cmd_calling_all_angels": "Commander Deck — Calling All Angels",
+    "cmd_keen_engineering": "Commander Deck — Keen Engineering",
+    "cmd_wretched_ranks": "Commander Deck — Wretched Ranks",
+    "cmd_reign_of_dragons": "Commander Deck — Reign of Dragons",
+    "cmd_tramplesaurus_rex": "Commander Deck — Tramplesaurus Rex",
     "cmd_world_shaper": "Commander Deck — World Shaper",
     "cmd_counter_intelligence": "Commander Deck — Counter Intelligence",
     "cmd_dance_of_the_elements": "Commander Deck — Dance of the Elements",
@@ -251,7 +289,6 @@ PRODUCT_LABELS = {
     "cmd_klingon_fury": "Commander Deck — Klingon Fury",
 }
 
-# Zweryfikowana lista 35 działających polskich sklepów
 POLISH_STORES = [
     {"name": "Strefa MTG", "base_url": "https://strefamtg.pl", "require_magic_word": False,
      "urls": ["https://strefamtg.pl/szukaj?controller=search&s=booster", "https://strefamtg.pl/szukaj?controller=search&s=commander", "https://strefamtg.pl/szukaj?controller=search&s=draft+night"]},
@@ -265,8 +302,6 @@ POLISH_STORES = [
      "urls": ["https://sklep.merfolk.pl/category/BOOSTERY-I-BOXY-MTG-343892"]},
     {"name": "Dragonus", "base_url": "https://dragonus.pl", "require_magic_word": True,
      "urls": ["https://dragonus.pl/pl/searchquery/booster/1/phot/5", "https://dragonus.pl/pl/searchquery/commander/1/phot/5"]},
-    {"name": "MagicTown", "base_url": "https://magictown.pl", "require_magic_word": False,
-     "urls": ["https://magictown.pl/?s=booster&post_type=product", "https://magictown.pl/?s=commander&post_type=product"]},
     {"name": "Zgrani.pl", "base_url": "https://zgrani.pl", "require_magic_word": False,
      "urls": ["https://zgrani.pl/pl/menu/magic-the-gathering/boostery-157", "https://zgrani.pl/pl/producers/magic-the-gathering-1618991396"]},
     {"name": "Sklep Graal", "base_url": "https://sklep-graal.pl", "require_magic_word": False,
@@ -287,8 +322,6 @@ POLISH_STORES = [
      "urls": ["https://redraft.pl/pl/menu/magic-the-gathering-165.html"]},
     {"name": "Flamberg", "base_url": "https://flamberg.com.pl", "require_magic_word": False,
      "urls": ["https://flamberg.com.pl/pl/menu/boostery-i-boxy-163"]},
-    {"name": "Gralnia", "base_url": "https://gralnia.pl", "require_magic_word": True,
-     "urls": ["https://gralnia.pl/pl/searchquery/booster/1/phot/5", "https://gralnia.pl/pl/searchquery/commander/1/phot/5"]},
     {"name": "Rebel.pl", "base_url": "https://www.rebel.pl", "require_magic_word": True,
      "urls": ["https://www.rebel.pl/szukaj.html?q=magic+booster", "https://www.rebel.pl/szukaj.html?q=magic+commander"]},
     {"name": "Mepel.pl", "base_url": "https://mepel.pl", "require_magic_word": True,
@@ -303,26 +336,33 @@ POLISH_STORES = [
      "urls": ["https://bolter.pl/pl/searchquery/booster/1/phot/5", "https://bolter.pl/pl/searchquery/commander/1/phot/5"]},
     {"name": "Vanaheim", "base_url": "https://vanaheim.pl", "require_magic_word": True,
      "urls": ["https://vanaheim.pl/pl/szukaj?controller=search&s=magic+booster", "https://vanaheim.pl/pl/szukaj?controller=search&s=magic+commander"]},
-    {"name": "XGames", "base_url": "https://xgames.pl", "require_magic_word": True,
-     "urls": ["https://xgames.pl/pl/searchquery/booster/1/phot/5", "https://xgames.pl/pl/searchquery/commander/1/phot/5"]},
-    {"name": "Zagramy.pl", "base_url": "https://zagramy.pl", "require_magic_word": True,
-     "urls": ["https://zagramy.pl/pl/searchquery/booster/1/phot/5", "https://zagramy.pl/pl/searchquery/commander/1/phot/5"]},
     {"name": "Wargamer", "base_url": "https://sklep.wargamer.pl", "require_magic_word": True,
      "urls": ["https://sklep.wargamer.pl/szukaj?controller=search&s=magic+booster", "https://sklep.wargamer.pl/szukaj?controller=search&s=magic+commander"]},
     {"name": "RGFK.pl", "base_url": "https://rgfk.pl", "require_magic_word": True,
      "urls": ["https://rgfk.pl/szukaj?controller=search&s=magic+booster", "https://rgfk.pl/szukaj?controller=search&s=magic+commander"]},
     {"name": "Planszomania", "base_url": "https://www.planszomania.pl", "require_magic_word": True,
      "urls": ["https://www.planszomania.pl/szukaj?q=magic+booster", "https://www.planszomania.pl/szukaj?q=magic+commander"]},
-    {"name": "Zagrajnik", "base_url": "https://zagrajnik.pl", "require_magic_word": True,
-     "urls": ["https://zagrajnik.pl/pl/searchquery/booster/1/phot/5", "https://zagrajnik.pl/pl/searchquery/commander/1/phot/5"]},
     {"name": "Geek Up", "base_url": "https://geekup.pl", "require_magic_word": True,
      "urls": ["https://geekup.pl/pl/searchquery/booster/1/phot/5", "https://geekup.pl/pl/searchquery/commander/1/phot/5"]},
     {"name": "Gry Bez Prądu", "base_url": "https://grybezpradu.eu", "require_magic_word": True,
      "urls": ["https://grybezpradu.eu/pl/searchquery/booster/1/phot/5", "https://grybezpradu.eu/pl/searchquery/commander/1/phot/5"]},
-    {"name": "Bat-Cave", "base_url": "https://bat-cave.pl", "require_magic_word": True,
-     "urls": ["https://bat-cave.pl/?s=magic+booster&post_type=product", "https://bat-cave.pl/?s=magic+commander&post_type=product"]},
-    {"name": "Przystań Gier", "base_url": "https://przystangier.pl", "require_magic_word": True,
-     "urls": ["https://przystangier.pl/pl/searchquery/booster/1/phot/5", "https://przystangier.pl/pl/searchquery/commander/1/phot/5"]},
+    # --- Nowe zweryfikowane sklepy z poprawionymi silnikami wyszukiwania ---
+    {"name": "TrueCollector", "base_url": "https://truecollector.pl", "require_magic_word": False,
+     "urls": ["https://truecollector.pl/?s=booster&post_type=product", "https://truecollector.pl/?s=commander&post_type=product"]},
+    {"name": "Gralnia.org", "base_url": "https://gralnia.org", "require_magic_word": True,
+     "urls": ["https://gralnia.org/?s=magic+booster&post_type=product", "https://gralnia.org/?s=magic+commander&post_type=product"]},
+    {"name": "Skład Gier", "base_url": "https://skladgier.pl", "require_magic_word": True,
+     "urls": ["https://skladgier.pl/szukaj?controller=search&s=magic+booster", "https://skladgier.pl/szukaj?controller=search&s=magic+commander"]},
+    {"name": "Planszolek", "base_url": "https://planszolek.pl", "require_magic_word": True,
+     "urls": ["https://planszolek.pl/search.php?text=magic+booster", "https://planszolek.pl/search.php?text=magic+commander"]},
+    {"name": "Zagrajnik", "base_url": "https://zagrajnik.shop", "require_magic_word": True,
+     "urls": ["https://zagrajnik.shop/pl/s?q=magic+booster", "https://zagrajnik.shop/pl/s?q=magic+commander"]},
+    {"name": "Bluegames", "base_url": "https://bluegames.pl", "require_magic_word": True,
+     "urls": ["https://bluegames.pl/pl/s?q=magic+booster", "https://bluegames.pl/pl/s?q=magic+commander"]},
+    {"name": "Mr. Puggy", "base_url": "https://mrpuggy.pl", "require_magic_word": False,
+     "urls": ["https://mrpuggy.pl/?s=booster&post_type=product", "https://mrpuggy.pl/?s=commander&post_type=product"]},
+    {"name": "TCGlove", "base_url": "https://www.tcglove.pl", "require_magic_word": False,
+     "urls": ["https://www.tcglove.pl/pl/s?q=magic+booster", "https://www.tcglove.pl/pl/s?q=magic+commander"]},
 ]
 
 BLACKLIST_WORDS = [
@@ -398,12 +438,18 @@ def classify_product(title):
     t = title.lower()
     is_box = ("box" in t or "display" in t)
 
+    if "starter collection" in t:
+        return "starter_collection"
     if "draft night" in t:
         return "draft_night"
     if "scene box" in t:
         return "scene_box"
     if "beginner box" in t:
         return "beginner_box"
+    if "jumpstart" in t and is_box:
+        return "jumpstart_box"
+    if "jumpstart" in t:
+        return "jumpstart_booster"
     if "collector" in t and is_box:
         return "collector_box"
     if "collector" in t and "booster" in t:
@@ -428,7 +474,6 @@ def classify_product(title):
         return "play_booster"
 
     return None
-
 
 def match_set_and_price(title, current_price):
     t = title.lower()
