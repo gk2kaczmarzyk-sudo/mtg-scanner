@@ -186,8 +186,6 @@ PRODUCT_LABELS = {
 POLISH_STORES = [
     {"name": "Strefa MTG", "base_url": "https://strefamtg.pl", "require_magic_word": False,
      "urls": ["https://strefamtg.pl/szukaj?controller=search&s=booster", "https://strefamtg.pl/szukaj?controller=search&s=commander", "https://strefamtg.pl/szukaj?controller=search&s=draft+night"]},
-    {"name": "Planeswalker.pl", "base_url": "https://planeswalker.pl", "require_magic_word": False,
-     "urls": ["https://planeswalker.pl/pl/searchquery/booster/1/full/5", "https://planeswalker.pl/pl/searchquery/commander/1/full/5"]},
     {"name": "Centrum MTG", "base_url": "https://www.centrum-mtg.com.pl", "require_magic_word": False,
      "urls": ["https://www.centrum-mtg.com.pl/?s=booster&post_type=product", "https://www.centrum-mtg.com.pl/?s=commander&post_type=product"]},
     {"name": "Time4Magic", "base_url": "https://time4magic.pl", "require_magic_word": False,
@@ -200,8 +198,6 @@ POLISH_STORES = [
      "urls": ["https://dragonus.pl/pl/searchquery/booster/1/phot/5", "https://dragonus.pl/pl/searchquery/commander/1/phot/5"]},
     {"name": "MagicTown", "base_url": "https://magictown.pl", "require_magic_word": False,
      "urls": ["https://magictown.pl/?s=booster&post_type=product", "https://magictown.pl/?s=commander&post_type=product"]},
-    {"name": "Talia Kart", "base_url": "https://taliakart.pl", "require_magic_word": True,
-     "urls": ["https://taliakart.pl/pl/searchquery/magic/1/full/5"]},
     {"name": "Zgrani.pl", "base_url": "https://zgrani.pl", "require_magic_word": False,
      "urls": ["https://zgrani.pl/pl/menu/magic-the-gathering/boostery-157", "https://zgrani.pl/pl/producers/magic-the-gathering-1618991396"]},
     {"name": "Sklep Graal", "base_url": "https://sklep-graal.pl", "require_magic_word": False,
@@ -234,8 +230,6 @@ POLISH_STORES = [
      "urls": ["https://aleplanszowki.pl/szukaj?controller=search&s=magic+booster", "https://aleplanszowki.pl/szukaj?controller=search&s=magic+commander"]},
     {"name": "3Trolle", "base_url": "https://3trolle.pl", "require_magic_word": True,
      "urls": ["https://3trolle.pl/szukaj?controller=search&s=magic+booster", "https://3trolle.pl/szukaj?controller=search&s=magic+commander"]},
-    {"name": "Sklep Gracza", "base_url": "https://sklepgracza.pl", "require_magic_word": True,
-     "urls": ["https://sklepgracza.pl/szukaj?controller=search&s=magic+booster", "https://sklepgracza.pl/szukaj?controller=search&s=magic+commander"]},
     {"name": "Bolter.pl", "base_url": "https://bolter.pl", "require_magic_word": True,
      "urls": ["https://bolter.pl/pl/searchquery/booster/1/phot/5", "https://bolter.pl/pl/searchquery/commander/1/phot/5"]},
     {"name": "Vanaheim", "base_url": "https://vanaheim.pl", "require_magic_word": True,
@@ -258,12 +252,8 @@ POLISH_STORES = [
      "urls": ["https://grybezpradu.eu/pl/searchquery/booster/1/phot/5", "https://grybezpradu.eu/pl/searchquery/commander/1/phot/5"]},
     {"name": "Bat-Cave", "base_url": "https://bat-cave.pl", "require_magic_word": True,
      "urls": ["https://bat-cave.pl/?s=magic+booster&post_type=product", "https://bat-cave.pl/?s=magic+commander&post_type=product"]},
-    {"name": "iSzop", "base_url": "https://iszop.pl", "require_magic_word": True,
-     "urls": ["https://iszop.pl/szukaj?controller=search&s=magic+booster", "https://iszop.pl/szukaj?controller=search&s=magic+commander"]},
     {"name": "Przystań Gier", "base_url": "https://przystangier.pl", "require_magic_word": True,
      "urls": ["https://przystangier.pl/pl/searchquery/booster/1/phot/5", "https://przystangier.pl/pl/searchquery/commander/1/phot/5"]},
-    {"name": "Planszówki.pl", "base_url": "https://planszowki.pl", "require_magic_word": True,
-     "urls": ["https://planszowki.pl/szukaj?controller=search&s=magic+booster", "https://planszowki.pl/szukaj?controller=search&s=magic+commander"]},
 ]
 
 BLACKLIST_WORDS = [
