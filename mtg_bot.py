@@ -41,12 +41,12 @@ SET_PRICE_RULES = [
             "prerelease": 100,
             "beginner_box": 105,
             "starter_collection": 195,
-            "cmd_calling_all_angels": 120,
-            "cmd_keen_engineering": 120,
-            "cmd_wretched_ranks": 120,
-            "cmd_reign_of_dragons": 120,
-            "cmd_tramplesaurus_rex": 120,
-            "commander_generic": 120,
+            "cmd_calling_all_angels": 105,
+            "cmd_keen_engineering": 105,
+            "cmd_wretched_ranks": 105,
+            "cmd_reign_of_dragons": 105,
+            "cmd_tramplesaurus_rex": 105,
+            "commander_generic": 105,
         },
     },
     {
@@ -303,12 +303,12 @@ POLISH_STORES = [
          "https://www.centrum-mtg.com.pl/?s=bundle&post_type=product",
          "https://www.centrum-mtg.com.pl/?s=foundations&post_type=product",
      ]},
-    {"name": "Time4Magic", "base_url": "https://time4magic.pl", "require_magic_word": False,
+    {"name": "Time4Magic", "base_url": "https://time4magic.pl", "require_magic_word": True,
      "urls": [
          "https://time4magic.pl/commander-decki-magic-the-gathering",
-         "https://time4magic.pl/pl/searchquery/booster/1/phot/5",
-         "https://time4magic.pl/pl/searchquery/bundle/1/phot/5",
-         "https://time4magic.pl/pl/searchquery/foundations/1/phot/5",
+         "https://time4magic.pl/pl/searchquery/magic+booster/1/phot/5",
+         "https://time4magic.pl/pl/searchquery/magic+bundle/1/phot/5",
+         "https://time4magic.pl/pl/searchquery/magic+foundations/1/phot/5",
      ]},
     {"name": "Card Dojo", "base_url": "https://carddojo.pl", "require_magic_word": False,
      "urls": ["https://carddojo.pl/pl/c/Magic-the-Gathering/43"]},
@@ -316,10 +316,10 @@ POLISH_STORES = [
      "urls": ["https://sklep.merfolk.pl/category/BOOSTERY-I-BOXY-MTG-343892"]},
     {"name": "Dragonus", "base_url": "https://dragonus.pl", "require_magic_word": True,
      "urls": [
-         "https://dragonus.pl/pl/searchquery/booster/1/phot/5",
-         "https://dragonus.pl/pl/searchquery/commander/1/phot/5",
-         "https://dragonus.pl/pl/searchquery/bundle/1/phot/5",
-         "https://dragonus.pl/pl/searchquery/foundations/1/phot/5",
+         "https://dragonus.pl/pl/searchquery/magic+booster/1/phot/5",
+         "https://dragonus.pl/pl/searchquery/magic+commander/1/phot/5",
+         "https://dragonus.pl/pl/searchquery/magic+bundle/1/phot/5",
+         "https://dragonus.pl/pl/searchquery/magic+foundations/1/phot/5",
      ]},
     {"name": "Zgrani.pl", "base_url": "https://zgrani.pl", "require_magic_word": False,
      "urls": ["https://zgrani.pl/pl/menu/magic-the-gathering/boostery-157", "https://zgrani.pl/pl/producers/magic-the-gathering-1618991396"]},
@@ -349,15 +349,15 @@ POLISH_STORES = [
          "https://www.rebel.pl/szukaj.html?q=magic+foundations",
      ]},
     {"name": "Mepel.pl", "base_url": "https://mepel.pl", "require_magic_word": True,
-     "urls": ["https://mepel.pl/pl/searchquery/booster/1/phot/5", "https://mepel.pl/pl/searchquery/commander/1/phot/5"]},
+     "urls": ["https://mepel.pl/pl/searchquery/magic+booster/1/phot/5", "https://mepel.pl/pl/searchquery/magic+commander/1/phot/5"]},
     {"name": "Planszostrefa", "base_url": "https://planszostrefa.pl", "require_magic_word": True,
-     "urls": ["https://planszostrefa.pl/pl/searchquery/booster/1/phot/5", "https://planszostrefa.pl/pl/searchquery/commander/1/phot/5"]},
+     "urls": ["https://planszostrefa.pl/pl/searchquery/magic+booster/1/phot/5", "https://planszostrefa.pl/pl/searchquery/magic+commander/1/phot/5"]},
     {"name": "Aleplanszówki", "base_url": "https://aleplanszowki.pl", "require_magic_word": True,
      "urls": ["https://aleplanszowki.pl/szukaj?controller=search&s=magic+booster", "https://aleplanszowki.pl/szukaj?controller=search&s=magic+commander"]},
     {"name": "3Trolle", "base_url": "https://3trolle.pl", "require_magic_word": True,
      "urls": ["https://3trolle.pl/szukaj?controller=search&s=magic+booster", "https://3trolle.pl/szukaj?controller=search&s=magic+commander"]},
     {"name": "Bolter.pl", "base_url": "https://bolter.pl", "require_magic_word": True,
-     "urls": ["https://bolter.pl/pl/searchquery/booster/1/phot/5", "https://bolter.pl/pl/searchquery/commander/1/phot/5"]},
+     "urls": ["https://bolter.pl/pl/searchquery/magic+booster/1/phot/5", "https://bolter.pl/pl/searchquery/magic+commander/1/phot/5"]},
     {"name": "Vanaheim", "base_url": "https://vanaheim.pl", "require_magic_word": True,
      "urls": [
          "https://vanaheim.pl/pl/szukaj?controller=search&s=magic+booster",
@@ -382,25 +382,20 @@ POLISH_STORES = [
          "https://www.planszomania.pl/szukaj?q=magic+foundations",
      ]},
     {"name": "Geek Up", "base_url": "https://geekup.pl", "require_magic_word": True,
-     "urls": ["https://geekup.pl/pl/searchquery/booster/1/phot/5", "https://geekup.pl/pl/searchquery/commander/1/phot/5"]},
+     "urls": ["https://geekup.pl/pl/searchquery/magic+booster/1/phot/5", "https://geekup.pl/pl/searchquery/magic+commander/1/phot/5"]},
     {"name": "Gry Bez Prądu", "base_url": "https://grybezpradu.eu", "require_magic_word": True,
-     "urls": ["https://grybezpradu.eu/pl/searchquery/booster/1/phot/5", "https://grybezpradu.eu/pl/searchquery/commander/1/phot/5"]},
-    {"name": "TrueCollector", "base_url": "https://truecollector.pl", "require_magic_word": False,
-     "urls": ["https://truecollector.pl/?s=booster&post_type=product", "https://truecollector.pl/?s=commander&post_type=product"]},
+     "urls": ["https://grybezpradu.eu/pl/searchquery/magic+booster/1/phot/5", "https://grybezpradu.eu/pl/searchquery/magic+commander/1/phot/5"]},
+    # --- Poprawione silniki Shoper dla nowych sklepów ---
     {"name": "Gralnia.org", "base_url": "https://gralnia.org", "require_magic_word": True,
-     "urls": ["https://gralnia.org/?s=magic+booster&post_type=product", "https://gralnia.org/?s=magic+commander&post_type=product"]},
+     "urls": ["https://gralnia.org/pl/searchquery/magic+booster/1/phot/5", "https://gralnia.org/pl/searchquery/magic+commander/1/phot/5"]},
     {"name": "Skład Gier", "base_url": "https://skladgier.pl", "require_magic_word": True,
-     "urls": ["https://skladgier.pl/szukaj?controller=search&s=magic+booster", "https://skladgier.pl/szukaj?controller=search&s=magic+commander"]},
+     "urls": ["https://skladgier.pl/pl/searchquery/magic+booster/1/phot/5", "https://skladgier.pl/pl/searchquery/magic+commander/1/phot/5"]},
     {"name": "Planszolek", "base_url": "https://planszolek.pl", "require_magic_word": True,
-     "urls": ["https://planszolek.pl/search.php?text=magic+booster", "https://planszolek.pl/search.php?text=magic+commander"]},
-    {"name": "Zagrajnik", "base_url": "https://zagrajnik.shop", "require_magic_word": True,
-     "urls": ["https://zagrajnik.shop/pl/s?q=magic+booster", "https://zagrajnik.shop/pl/s?q=magic+commander"]},
+     "urls": ["https://planszolek.pl/pl/searchquery/magic+booster/1/phot/5", "https://planszolek.pl/pl/searchquery/magic+commander/1/phot/5"]},
     {"name": "Bluegames", "base_url": "https://bluegames.pl", "require_magic_word": True,
-     "urls": ["https://bluegames.pl/pl/s?q=magic+booster", "https://bluegames.pl/pl/s?q=magic+commander"]},
-    {"name": "Mr. Puggy", "base_url": "https://mrpuggy.pl", "require_magic_word": False,
-     "urls": ["https://mrpuggy.pl/?s=booster&post_type=product", "https://mrpuggy.pl/?s=commander&post_type=product"]},
-    {"name": "TCGlove", "base_url": "https://www.tcglove.pl", "require_magic_word": False,
-     "urls": ["https://www.tcglove.pl/pl/s?q=magic+booster", "https://www.tcglove.pl/pl/s?q=magic+commander"]},
+     "urls": ["https://bluegames.pl/pl/searchquery/magic+booster/1/phot/5", "https://bluegames.pl/pl/searchquery/magic+commander/1/phot/5"]},
+    {"name": "TCGlove", "base_url": "https://www.tcglove.pl", "require_magic_word": True,
+     "urls": ["https://www.tcglove.pl/pl/searchquery/magic+booster/1/phot/5", "https://www.tcglove.pl/pl/searchquery/magic+commander/1/phot/5"]},
 ]
 
 BLACKLIST_WORDS = [
@@ -566,6 +561,7 @@ def match_set_and_price(title, current_price):
 
 
 def parse_store_page(store_name, base_url, html, require_magic_word):
+    """Zwraca listę okazji oraz łączną liczbę znalezionych kafelków produktów na stronie."""
     soup = BeautifulSoup(html, "html.parser")
     results = []
     seen_in_page = set()
@@ -628,7 +624,7 @@ def parse_store_page(store_name, base_url, html, require_magic_word):
             "url": full_url,
         })
 
-    return results
+    return results, len(cards)
 
 
 def create_http_session():
@@ -687,6 +683,7 @@ def scan_single_store(store):
     session = create_http_session()
     store_responded = False
     used_scraperapi = False
+    total_cards_found = 0
     store_deals = []
 
     for url in store["urls"]:
@@ -697,32 +694,38 @@ def scan_single_store(store):
         store_responded = True
         if mode == "scraperapi":
             used_scraperapi = True
-        deals = parse_store_page(store_name, base_url, res.text, require_magic)
+        deals, cards_count = parse_store_page(store_name, base_url, res.text, require_magic)
+        total_cards_found += cards_count
         store_deals.extend(deals)
         time.sleep(0.3)
 
-    return store_name, store_responded, used_scraperapi, store_deals
+    return store_name, store_responded, used_scraperapi, total_cards_found, store_deals
 
 
 def scan_polish_stores(seen_offers):
     new_found = 0
     working_direct = []
     working_api = []
+    empty_stores = []
     failed_stores = []
     all_deals = []
 
     with ThreadPoolExecutor(max_workers=5) as executor:
         futures = [executor.submit(scan_single_store, store) for store in POLISH_STORES]
         for future in as_completed(futures):
-            store_name, responded, used_api, deals = future.result()
-            if responded:
-                if used_api:
-                    working_api.append(store_name)
-                else:
-                    working_direct.append(store_name)
-                all_deals.extend(deals)
-            else:
+            store_name, responded, used_api, cards_count, deals = future.result()
+            if not responded:
                 failed_stores.append(store_name)
+            elif cards_count == 0:
+                empty_stores.append(store_name)
+                print(f"[PUSTE WYNIKI] {store_name}: strona 200 OK, ale 0 kafelków produktów")
+            else:
+                label = f"{store_name} ({cards_count})"
+                if used_api:
+                    working_api.append(label)
+                else:
+                    working_direct.append(label)
+                all_deals.extend(deals)
 
     for deal in all_deals:
         offer_key = f"{deal['id']}_{deal['price']}"
@@ -742,32 +745,37 @@ def scan_polish_stores(seen_offers):
             new_found += 1
             time.sleep(0.5)
 
-    return new_found, sorted(working_direct), sorted(working_api), sorted(failed_stores)
+    return new_found, sorted(working_direct), sorted(working_api), sorted(empty_stores), sorted(failed_stores)
 
 
 def run_once():
     mode_info = "z ScraperAPI PL" if SCRAPER_API_KEY else "bez klucza ScraperAPI"
     print(f"Skanuję {len(POLISH_STORES)} polskich sklepów ({mode_info})...")
     seen = load_seen_offers()
-    found, direct_ok, api_ok, failed = scan_polish_stores(seen)
+    found, direct_ok, api_ok, empty_ok, failed = scan_polish_stores(seen)
     save_seen_offers(seen)
 
-    total_ok = len(direct_ok) + len(api_ok)
+    total_with_products = len(direct_ok) + len(api_ok)
 
     if os.getenv("GITHUB_EVENT_NAME") == "workflow_dispatch":
         direct_list = ", ".join(direct_ok) if direct_ok else "brak"
         api_list = ", ".join(api_ok) if api_ok else "brak"
+        empty_list = ", ".join(empty_ok) if empty_ok else "brak"
         fail_list = ", ".join(failed) if failed else "brak"
         send_telegram_text(
             f"✅ <b>Skanowanie zakończone!</b>\n"
-            f"🏪 Wynik: <b>{total_ok}/{len(POLISH_STORES)}</b>\n\n"
+            f"🏪 Sklepy z produktami: <b>{total_with_products}/{len(POLISH_STORES)}</b>\n\n"
             f"🟢 <b>Bezpośrednio ({len(direct_ok)}):</b> {direct_list}\n\n"
-            f"🇵🇱 <b>Odblokowane przez ScraperAPI PL ({len(api_ok)}):</b> {api_list}\n\n"
+            f"🇵🇱 <b>Przez ScraperAPI PL ({len(api_ok)}):</b> {api_list}\n\n"
+            f"⚠️ <b>Otwarte, ale 0 produktów ({len(empty_ok)}):</b> {empty_list}\n\n"
             f"🔴 <b>Niedostępne ({len(failed)}):</b> {fail_list}\n\n"
             f"🔥 <b>Nowych okazji:</b> {found}"
         )
 
-    print(f"Zakończono. Działają: {total_ok}/{len(POLISH_STORES)} (w tym {len(api_ok)} przez ScraperAPI) | Nowe okazje: {found}")
+    print(
+        f"Zakończono. Z produktami: {total_with_products}/{len(POLISH_STORES)} "
+        f"| Puste (0 prod.): {len(empty_ok)} | Niedostępne: {len(failed)} | Nowe okazje: {found}"
+    )
 
 
 if __name__ == "__main__":
