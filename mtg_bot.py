@@ -41,12 +41,12 @@ SET_PRICE_RULES = [
             "prerelease": 100,
             "beginner_box": 105,
             "starter_collection": 195,
-            "cmd_calling_all_angels": 105,
-            "cmd_keen_engineering": 105,
-            "cmd_wretched_ranks": 105,
-            "cmd_reign_of_dragons": 105,
-            "cmd_tramplesaurus_rex": 105,
-            "commander_generic": 105,
+            "cmd_calling_all_angels": 120,
+            "cmd_keen_engineering": 120,
+            "cmd_wretched_ranks": 120,
+            "cmd_reign_of_dragons": 120,
+            "cmd_tramplesaurus_rex": 120,
+            "commander_generic": 120,
         },
     },
     {
@@ -212,6 +212,12 @@ SET_PRICE_RULES = [
 
 # Słowa kluczowe dla konkretnych talii Commander Deck (kolejność ma znaczenie)
 COMMANDER_DECK_KEYWORDS = [
+    # Foundations
+    (["calling all angels"], "cmd_calling_all_angels"),
+    (["keen engineering"], "cmd_keen_engineering"),
+    (["wretched ranks"], "cmd_wretched_ranks"),
+    (["reign of dragons"], "cmd_reign_of_dragons"),
+    (["tramplesaurus rex"], "cmd_tramplesaurus_rex"),
     # Edge of Eternities
     (["world shaper"], "cmd_world_shaper"),
     (["counter intelligence"], "cmd_counter_intelligence"),
@@ -238,20 +244,12 @@ COMMANDER_DECK_KEYWORDS = [
     (["landing party"], "cmd_landing_party"),
     (["federation fleet"], "cmd_federation_fleet"),
     (["klingon fury"], "cmd_klingon_fury"),
-    # Foundations
-    (["calling all angels"], "cmd_calling_all_angels"),
-    (["keen engineering"], "cmd_keen_engineering"),
-    (["wretched ranks"], "cmd_wretched_ranks"),
-    (["reign of dragons"], "cmd_reign_of_dragons"),
-    (["tramplesaurus rex"], "cmd_tramplesaurus_rex"),
-    
 ]
 
 PRODUCT_LABELS = {
-
     "jumpstart_booster": "Jumpstart Booster",
     "jumpstart_box": "Jumpstart Booster Box",
-    "starter_collection": "Starter Collection", 
+    "starter_collection": "Starter Collection",
     "play_booster": "Play Booster",
     "play_box": "Play Booster Box",
     "collector_booster": "Collector Booster",
@@ -291,17 +289,38 @@ PRODUCT_LABELS = {
 
 POLISH_STORES = [
     {"name": "Strefa MTG", "base_url": "https://strefamtg.pl", "require_magic_word": False,
-     "urls": ["https://strefamtg.pl/szukaj?controller=search&s=booster", "https://strefamtg.pl/szukaj?controller=search&s=commander", "https://strefamtg.pl/szukaj?controller=search&s=draft+night"]},
+     "urls": [
+         "https://strefamtg.pl/szukaj?controller=search&s=booster",
+         "https://strefamtg.pl/szukaj?controller=search&s=commander",
+         "https://strefamtg.pl/szukaj?controller=search&s=bundle",
+         "https://strefamtg.pl/szukaj?controller=search&s=foundations",
+         "https://strefamtg.pl/szukaj?controller=search&s=draft+night",
+     ]},
     {"name": "Centrum MTG", "base_url": "https://www.centrum-mtg.com.pl", "require_magic_word": False,
-     "urls": ["https://www.centrum-mtg.com.pl/?s=booster&post_type=product", "https://www.centrum-mtg.com.pl/?s=commander&post_type=product"]},
+     "urls": [
+         "https://www.centrum-mtg.com.pl/?s=booster&post_type=product",
+         "https://www.centrum-mtg.com.pl/?s=commander&post_type=product",
+         "https://www.centrum-mtg.com.pl/?s=bundle&post_type=product",
+         "https://www.centrum-mtg.com.pl/?s=foundations&post_type=product",
+     ]},
     {"name": "Time4Magic", "base_url": "https://time4magic.pl", "require_magic_word": False,
-     "urls": ["https://time4magic.pl/commander-decki-magic-the-gathering", "https://time4magic.pl/pl/searchquery/booster/1/phot/5"]},
+     "urls": [
+         "https://time4magic.pl/commander-decki-magic-the-gathering",
+         "https://time4magic.pl/pl/searchquery/booster/1/phot/5",
+         "https://time4magic.pl/pl/searchquery/bundle/1/phot/5",
+         "https://time4magic.pl/pl/searchquery/foundations/1/phot/5",
+     ]},
     {"name": "Card Dojo", "base_url": "https://carddojo.pl", "require_magic_word": False,
      "urls": ["https://carddojo.pl/pl/c/Magic-the-Gathering/43"]},
     {"name": "Sklep Merfolk", "base_url": "https://sklep.merfolk.pl", "require_magic_word": False,
      "urls": ["https://sklep.merfolk.pl/category/BOOSTERY-I-BOXY-MTG-343892"]},
     {"name": "Dragonus", "base_url": "https://dragonus.pl", "require_magic_word": True,
-     "urls": ["https://dragonus.pl/pl/searchquery/booster/1/phot/5", "https://dragonus.pl/pl/searchquery/commander/1/phot/5"]},
+     "urls": [
+         "https://dragonus.pl/pl/searchquery/booster/1/phot/5",
+         "https://dragonus.pl/pl/searchquery/commander/1/phot/5",
+         "https://dragonus.pl/pl/searchquery/bundle/1/phot/5",
+         "https://dragonus.pl/pl/searchquery/foundations/1/phot/5",
+     ]},
     {"name": "Zgrani.pl", "base_url": "https://zgrani.pl", "require_magic_word": False,
      "urls": ["https://zgrani.pl/pl/menu/magic-the-gathering/boostery-157", "https://zgrani.pl/pl/producers/magic-the-gathering-1618991396"]},
     {"name": "Sklep Graal", "base_url": "https://sklep-graal.pl", "require_magic_word": False,
@@ -323,7 +342,12 @@ POLISH_STORES = [
     {"name": "Flamberg", "base_url": "https://flamberg.com.pl", "require_magic_word": False,
      "urls": ["https://flamberg.com.pl/pl/menu/boostery-i-boxy-163"]},
     {"name": "Rebel.pl", "base_url": "https://www.rebel.pl", "require_magic_word": True,
-     "urls": ["https://www.rebel.pl/szukaj.html?q=magic+booster", "https://www.rebel.pl/szukaj.html?q=magic+commander"]},
+     "urls": [
+         "https://www.rebel.pl/szukaj.html?q=magic+booster",
+         "https://www.rebel.pl/szukaj.html?q=magic+commander",
+         "https://www.rebel.pl/szukaj.html?q=magic+bundle",
+         "https://www.rebel.pl/szukaj.html?q=magic+foundations",
+     ]},
     {"name": "Mepel.pl", "base_url": "https://mepel.pl", "require_magic_word": True,
      "urls": ["https://mepel.pl/pl/searchquery/booster/1/phot/5", "https://mepel.pl/pl/searchquery/commander/1/phot/5"]},
     {"name": "Planszostrefa", "base_url": "https://planszostrefa.pl", "require_magic_word": True,
@@ -335,18 +359,32 @@ POLISH_STORES = [
     {"name": "Bolter.pl", "base_url": "https://bolter.pl", "require_magic_word": True,
      "urls": ["https://bolter.pl/pl/searchquery/booster/1/phot/5", "https://bolter.pl/pl/searchquery/commander/1/phot/5"]},
     {"name": "Vanaheim", "base_url": "https://vanaheim.pl", "require_magic_word": True,
-     "urls": ["https://vanaheim.pl/pl/szukaj?controller=search&s=magic+booster", "https://vanaheim.pl/pl/szukaj?controller=search&s=magic+commander"]},
+     "urls": [
+         "https://vanaheim.pl/pl/szukaj?controller=search&s=magic+booster",
+         "https://vanaheim.pl/pl/szukaj?controller=search&s=magic+commander",
+         "https://vanaheim.pl/pl/szukaj?controller=search&s=magic+bundle",
+         "https://vanaheim.pl/pl/szukaj?controller=search&s=magic+foundations",
+     ]},
     {"name": "Wargamer", "base_url": "https://sklep.wargamer.pl", "require_magic_word": True,
-     "urls": ["https://sklep.wargamer.pl/szukaj?controller=search&s=magic+booster", "https://sklep.wargamer.pl/szukaj?controller=search&s=magic+commander"]},
+     "urls": [
+         "https://sklep.wargamer.pl/szukaj?controller=search&s=magic+booster",
+         "https://sklep.wargamer.pl/szukaj?controller=search&s=magic+commander",
+         "https://sklep.wargamer.pl/szukaj?controller=search&s=magic+bundle",
+         "https://sklep.wargamer.pl/szukaj?controller=search&s=magic+foundations",
+     ]},
     {"name": "RGFK.pl", "base_url": "https://rgfk.pl", "require_magic_word": True,
      "urls": ["https://rgfk.pl/szukaj?controller=search&s=magic+booster", "https://rgfk.pl/szukaj?controller=search&s=magic+commander"]},
     {"name": "Planszomania", "base_url": "https://www.planszomania.pl", "require_magic_word": True,
-     "urls": ["https://www.planszomania.pl/szukaj?q=magic+booster", "https://www.planszomania.pl/szukaj?q=magic+commander"]},
+     "urls": [
+         "https://www.planszomania.pl/szukaj?q=magic+booster",
+         "https://www.planszomania.pl/szukaj?q=magic+commander",
+         "https://www.planszomania.pl/szukaj?q=magic+bundle",
+         "https://www.planszomania.pl/szukaj?q=magic+foundations",
+     ]},
     {"name": "Geek Up", "base_url": "https://geekup.pl", "require_magic_word": True,
      "urls": ["https://geekup.pl/pl/searchquery/booster/1/phot/5", "https://geekup.pl/pl/searchquery/commander/1/phot/5"]},
     {"name": "Gry Bez Prądu", "base_url": "https://grybezpradu.eu", "require_magic_word": True,
      "urls": ["https://grybezpradu.eu/pl/searchquery/booster/1/phot/5", "https://grybezpradu.eu/pl/searchquery/commander/1/phot/5"]},
-    # --- Nowe zweryfikowane sklepy z poprawionymi silnikami wyszukiwania ---
     {"name": "TrueCollector", "base_url": "https://truecollector.pl", "require_magic_word": False,
      "urls": ["https://truecollector.pl/?s=booster&post_type=product", "https://truecollector.pl/?s=commander&post_type=product"]},
     {"name": "Gralnia.org", "base_url": "https://gralnia.org", "require_magic_word": True,
@@ -367,9 +405,10 @@ POLISH_STORES = [
 
 BLACKLIST_WORDS = [
     "set booster", "draft booster", "school of mages",
-    "koszulki", "sleeves", "album", "segregator", "mata", "playmat",
+    "sample pack", "sample", "promo pack", "welcome deck", "art series",
+    "koszulki", "sleeves", "album", "segregator", "mata do gry", "playmat",
     "deck box", "deckbox", "pudełko na karty", "kości", "dice",
-    "token", "singiel", "single", "puste", "pusty", "ultra pro", "dragon shield",
+    "token", "singiel", "singli", "karta pojedyncza", "puste", "pusty", "ultra pro", "dragon shield",
     "pokemon", "lorcana", "one piece", "star wars", "flesh and blood", "yu-gi-oh",
     "digimon", "altered", "sorcery", "riftbound", "gundam", "cyberpunk"
 ]
@@ -419,7 +458,39 @@ def send_telegram_text(text):
 
 
 def extract_price(card_soup):
-    text = card_soup.get_text(" ", strip=True)
+    """Wyciąga aktualną cenę brutto produktu z pominięciem starych cen, netto, Omnibus i dostawy."""
+    card_copy = BeautifulSoup(str(card_soup), "html.parser")
+    for tag in card_copy.select("del, s, .old-price, .regular-price, .price-old, .omnibus, .lowest-price"):
+        tag.decompose()
+
+    # 1. Priorytet: dedykowane znaczniki aktualnej ceny
+    price_els = card_copy.select(
+        ".current-price, .price-new, .special-price, ins .woocommerce-Price-amount, "
+        ".woocommerce-Price-amount, .price, .product-price"
+    )
+    for el in price_els:
+        el_text = el.get_text(" ", strip=True)
+        if any(skip in el_text.lower() for skip in ["30 dni", "najniższa", "/ szt", "/szt", "dostaw", "netto"]):
+            continue
+        el_matches = re.findall(r"(\d[\d\s\xa0]*[.,]\d{2})\s*(?:zł|pln)", el_text, flags=re.IGNORECASE)
+        el_values = []
+        for m in el_matches:
+            cleaned = m.replace(" ", "").replace("\xa0", "").replace(",", ".")
+            try:
+                val = float(cleaned)
+                if 5.0 <= val <= 10000.0:
+                    el_values.append(val)
+            except ValueError:
+                pass
+        if el_values:
+            return min(el_values)
+
+    # 2. Fallback: tekst kafelka po wycięciu fraz Omnibus, dostawy, rat, netto i ceny za sztukę
+    text = card_copy.get_text(" ", strip=True)
+    text = re.sub(r"(?:najniższa cena|z 30 dni|dostawa|rata).*?\d+[.,]\d{2}\s*(?:zł|pln)", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"\d[\d\s\xa0]*[.,]\d{2}\s*(?:zł|pln)\s*netto", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"\([^)]*\d+[.,]\d{2}\s*(?:zł|pln)\s*/\s*szt[^)]*\)", "", text, flags=re.IGNORECASE)
+
     matches = re.findall(r"(\d[\d\s\xa0]*[.,]\d{2})\s*(?:zł|pln)", text, flags=re.IGNORECASE)
     values = []
     for m in matches:
@@ -452,7 +523,7 @@ def classify_product(title):
         return "jumpstart_booster"
     if "collector" in t and is_box:
         return "collector_box"
-    if "collector" in t and "booster" in t:
+    if "collector" in t and ("booster" in t or "pack" in t):
         return "collector_booster"
     if "bundle" in t:
         return "bundle"
@@ -468,12 +539,13 @@ def classify_product(title):
     if "commander" in t:
         return "commander_generic"
 
-    if is_box and "booster" in t:
+    if (is_box and "booster" in t) or "play box" in t or "play display" in t:
         return "play_box"
     if "play booster" in t or ("booster" in t and not is_box):
         return "play_booster"
 
     return None
+
 
 def match_set_and_price(title, current_price):
     t = title.lower()
@@ -496,6 +568,7 @@ def match_set_and_price(title, current_price):
 def parse_store_page(store_name, base_url, html, require_magic_word):
     soup = BeautifulSoup(html, "html.parser")
     results = []
+    seen_in_page = set()
 
     cards = soup.select(
         ".product-inner-wrap, .product, .product-miniature, .product-box, "
@@ -520,6 +593,11 @@ def parse_store_page(store_name, base_url, html, require_magic_word):
         if not href or href.startswith("#") or "javascript:" in href:
             continue
 
+        full_url = urljoin(base_url, href).split("#")[0]
+        if full_url in seen_in_page:
+            continue
+        seen_in_page.add(full_url)
+
         title = link_el.get("title") or link_el.get_text(" ", strip=True)
         title = re.sub(r"\s+", " ", title).strip()
         if len(title) < 6:
@@ -541,7 +619,6 @@ def parse_store_page(store_name, base_url, html, require_magic_word):
         if not ok:
             continue
 
-        full_url = urljoin(base_url, href)
         results.append({
             "id": full_url,
             "store": store_name,
@@ -576,7 +653,10 @@ def fetch_direct_or_scraperapi(session, url, timeout=10):
         else:
             res = session.get(url, timeout=timeout, verify=False)
         if res.status_code == 200:
+            res.encoding = res.apparent_encoding or "utf-8"
             return res, "direct"
+        if res.status_code == 404:
+            return None, None
     except Exception:
         pass
 
@@ -591,6 +671,7 @@ def fetch_direct_or_scraperapi(session, url, timeout=10):
         }
         res = requests.get("https://api.scraperapi.com/", params=api_params, timeout=20)
         if res.status_code == 200:
+            res.encoding = res.apparent_encoding or "utf-8"
             return res, "scraperapi"
         print(f"[ScraperAPI] Status {res.status_code} dla {url}")
     except Exception as e:
