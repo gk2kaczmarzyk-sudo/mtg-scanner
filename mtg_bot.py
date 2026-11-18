@@ -736,7 +736,6 @@ def scan_polish_stores(seen_offers):
             f"🔥 <b>Okazja MTG Sealed — {deal['store']}!</b>\n\n"
             f"📦 <b>{deal['title']}</b>\n"
             f"💰 Cena: <b>{deal['price']:.2f} zł</b>\n"
-            f"🏷 {deal['reason']}\n\n"
             f"🔗 <a href='{deal['url']}'>Przejdź do sklepu</a>"
         )
         print(f"[OKAZJA] {deal['store']} | {deal['title']} | {deal['price']} zł")
