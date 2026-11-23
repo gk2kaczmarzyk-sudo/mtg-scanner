@@ -24,29 +24,28 @@ SCRAPER_API_KEY = os.getenv("SCRAPER_API_KEY", "").strip()
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SEEN_FILE = os.path.join(BASE_DIR, "seen_offers.json")
 
-# Oddzielne progi cenowe (w PLN) oparte o wartości rynkowe TCGplayer
-# z rozbiciem na konkretne talie Commander Deck dla każdego dodatku
+# Progi ustawione ok. 10-15% poniżej standardowych cen w polskich sklepach
 SET_PRICE_RULES = [
     {
         "set_name": "Foundations",
         "keywords": ["foundations"],
         "prices": {
             "play_booster": 16,
-            "play_box": 430,
+            "play_box": 450,
             "collector_booster": 115,
             "collector_box": 1250,
-            "jumpstart_booster": 16,
-            "jumpstart_box": 340,
-            "bundle": 165,
-            "prerelease": 100,
+            "jumpstart_booster": 17,
+            "jumpstart_box": 360,
+            "bundle": 175,
+            "prerelease": 105,
             "beginner_box": 105,
-            "starter_collection": 195,
-            "cmd_calling_all_angels": 105,
-            "cmd_keen_engineering": 105,
-            "cmd_wretched_ranks": 105,
-            "cmd_reign_of_dragons": 105,
-            "cmd_tramplesaurus_rex": 105,
-            "commander_generic": 105,
+            "starter_collection": 200,
+            "cmd_calling_all_angels": 125,
+            "cmd_keen_engineering": 125,
+            "cmd_wretched_ranks": 125,
+            "cmd_reign_of_dragons": 125,
+            "cmd_tramplesaurus_rex": 125,
+            "commander_generic": 125,
         },
     },
     {
@@ -54,14 +53,14 @@ SET_PRICE_RULES = [
         "keywords": ["edge of eternities"],
         "prices": {
             "play_booster": 18,
-            "play_box": 520,
-            "collector_booster": 180,
-            "collector_box": 1850,
-            "bundle": 240,
+            "play_box": 540,
+            "collector_booster": 175,
+            "collector_box": 1750,
+            "bundle": 220,
             "prerelease": 115,
-            "cmd_world_shaper": 175,          # TCGplayer: ~$54.08
-            "cmd_counter_intelligence": 140,  # TCGplayer: ~$43.29
-            "commander_generic": 140,
+            "cmd_world_shaper": 180,
+            "cmd_counter_intelligence": 150,
+            "commander_generic": 150,
         },
     },
     {
@@ -69,12 +68,12 @@ SET_PRICE_RULES = [
         "keywords": ["spider-man", "spiderman"],
         "prices": {
             "play_booster": 18,
-            "play_box": 480,
-            "collector_booster": 115,
-            "collector_box": 1250,
-            "bundle": 190,
-            "prerelease": 120,
-            "scene_box": 110,
+            "play_box": 500,
+            "collector_booster": 120,
+            "collector_box": 1300,
+            "bundle": 195,
+            "prerelease": 115,
+            "scene_box": 115,
         },
     },
     {
@@ -82,13 +81,13 @@ SET_PRICE_RULES = [
         "keywords": ["avatar"],
         "prices": {
             "play_booster": 18,
-            "play_box": 440,
-            "collector_booster": 135,
-            "collector_box": 1350,
+            "play_box": 470,
+            "collector_booster": 140,
+            "collector_box": 1400,
             "bundle": 210,
-            "prerelease": 125,
+            "prerelease": 120,
             "beginner_box": 110,
-            "scene_box": 135,
+            "scene_box": 130,
         },
     },
     {
@@ -96,150 +95,141 @@ SET_PRICE_RULES = [
         "keywords": ["lorwyn"],
         "prices": {
             "play_booster": 18,
-            "play_box": 450,
-            "collector_booster": 115,
-            "collector_box": 1250,
-            "bundle": 195,
-            "prerelease": 115,
-            "draft_night": 310,
-            "cmd_dance_of_the_elements": 145,  # TCGplayer: ~$40.67
-            "cmd_blight_curse": 130,           # TCGplayer: ~$35.99
-            "commander_generic": 130,
+            "play_box": 460,
+            "collector_booster": 120,
+            "collector_box": 1280,
+            "bundle": 190,
+            "prerelease": 110,
+            "draft_night": 300,
+            "cmd_dance_of_the_elements": 150,
+            "cmd_blight_curse": 135,
+            "commander_generic": 135,
         },
     },
     {
         "set_name": "Teenage Mutant Ninja Turtles",
         "keywords": ["ninja turtles", "tmnt"],
         "prices": {
-            "play_booster": 15,
-            "play_box": 360,
-            "collector_booster": 110,
-            "collector_box": 1200,
-            "bundle": 145,
-            "prerelease": 85,
-            "draft_night": 250,
-            "cmd_turtle_power": 130,           # TCGplayer: ~$32.95
-            "commander_generic": 130,
+            "play_booster": 16,
+            "play_box": 390,
+            "collector_booster": 115,
+            "collector_box": 1250,
+            "bundle": 165,
+            "prerelease": 95,
+            "draft_night": 265,
+            "cmd_turtle_power": 135,
+            "commander_generic": 135,
         },
     },
     {
         "set_name": "Secrets of Strixhaven",
         "keywords": ["strixhaven"],
         "prices": {
-            "play_booster": 16,
-            "play_box": 450,
+            "play_booster": 17,
+            "play_box": 460,
             "collector_booster": 135,
             "collector_box": 1450,
-            "bundle": 150,
+            "bundle": 170,
             "prerelease": 105,
-            "draft_night": 280,
-            "cmd_silverquill_influence": 195,  # TCGplayer: ~$59.99
-            "cmd_witherbloom_pestilence": 165, # TCGplayer: ~$48.61
-            "cmd_prismari_artistry": 135,      # TCGplayer: ~$37.77
-            "cmd_lorehold_spirit": 135,        # TCGplayer: ~$37.36
-            "cmd_quandrix_unlimited": 130,     # TCGplayer: ~$36.82
-            "commander_generic": 130,
+            "draft_night": 285,
+            "cmd_silverquill_influence": 200,
+            "cmd_witherbloom_pestilence": 170,
+            "cmd_prismari_artistry": 140,
+            "cmd_lorehold_spirit": 140,
+            "cmd_quandrix_unlimited": 135,
+            "commander_generic": 135,
         },
     },
     {
         "set_name": "Marvel Super Heroes",
         "keywords": ["marvel"],
         "prices": {
-            "play_booster": 16,
-            "play_box": 390,
-            "collector_booster": 135,
-            "collector_box": 1400,
-            "bundle": 145,
-            "prerelease": 95,
-            "draft_night": 260,
-            "scene_box": 80,
-            "cmd_doom_prevails": 205,          # TCGplayer: ~$62.76
-            "cmd_avengers_assemble": 155,      # TCGplayer: ~$44.88
-            "cmd_wakanda_forever": 145,        # TCGplayer: ~$41.90
-            "cmd_fantastic_four": 125,         # TCGplayer: ~$34.92
-            "commander_generic": 125,
+            "play_booster": 17,
+            "play_box": 430,
+            "collector_booster": 140,
+            "collector_box": 1450,
+            "bundle": 175,
+            "prerelease": 105,
+            "draft_night": 275,
+            "scene_box": 95,
+            "cmd_doom_prevails": 210,
+            "cmd_avengers_assemble": 165,
+            "cmd_wakanda_forever": 155,
+            "cmd_fantastic_four": 135,
+            "commander_generic": 135,
         },
     },
     {
         "set_name": "The Hobbit",
         "keywords": ["hobbit"],
         "prices": {
-            "play_booster": 16,
-            "play_box": 440,
-            "collector_booster": 150,
+            "play_booster": 17,
+            "play_box": 460,
+            "collector_booster": 145,
             "collector_box": 1450,
-            "bundle": 185,
+            "bundle": 190,
             "prerelease": 115,
             "draft_night": 300,
-            "scene_box": 110,
+            "scene_box": 115,
         },
     },
     {
         "set_name": "Reality Fracture",
         "keywords": ["reality fracture"],
         "prices": {
-            "play_booster": 16,
-            "play_box": 410,
-            "collector_booster": 115,
-            "collector_box": 1200,
-            "bundle": 150,
-            "prerelease": 100,
-            "draft_night": 270,
-            "cmd_multiverse_reforged": 175,    # TCGplayer: ~$52.82
-            "commander_generic": 175,
+            "play_booster": 17,
+            "play_box": 430,
+            "collector_booster": 120,
+            "collector_box": 1250,
+            "bundle": 165,
+            "prerelease": 105,
+            "draft_night": 275,
+            "cmd_multiverse_reforged": 180,
+            "commander_generic": 180,
         },
     },
     {
         "set_name": "Star Trek",
         "keywords": ["star trek"],
         "prices": {
-            "play_booster": 16,
-            "play_box": 395,
+            "play_booster": 17,
+            "play_box": 420,
             "collector_booster": 135,
-            "collector_box": 1350,
-            "bundle": 160,
-            "prerelease": 105,
-            "draft_night": 275,
+            "collector_box": 1380,
+            "bundle": 175,
+            "prerelease": 110,
+            "draft_night": 280,
             "scene_box": 115,
-            "cmd_we_are_the_borg": 235,        # TCGplayer: ~$73.57
-            "cmd_landing_party": 180,          # TCGplayer: ~$54.93
-            "cmd_federation_fleet": 140,       # TCGplayer: ~$39.99
-            "cmd_klingon_fury": 140,           # TCGplayer: ~$39.47
-            "commander_generic": 140,
+            "cmd_we_are_the_borg": 240,
+            "cmd_landing_party": 185,
+            "cmd_federation_fleet": 145,
+            "cmd_klingon_fury": 145,
+            "commander_generic": 145,
         },
     },
 ]
 
-# Słowa kluczowe dla konkretnych talii Commander Deck (kolejność ma znaczenie)
 COMMANDER_DECK_KEYWORDS = [
-    # Foundations
     (["calling all angels"], "cmd_calling_all_angels"),
     (["keen engineering"], "cmd_keen_engineering"),
     (["wretched ranks"], "cmd_wretched_ranks"),
     (["reign of dragons"], "cmd_reign_of_dragons"),
     (["tramplesaurus rex"], "cmd_tramplesaurus_rex"),
-    # Edge of Eternities
     (["world shaper"], "cmd_world_shaper"),
     (["counter intelligence"], "cmd_counter_intelligence"),
-    # Lorwyn Eclipsed
     (["dance of the elements"], "cmd_dance_of_the_elements"),
     (["blight curse"], "cmd_blight_curse"),
-    # Teenage Mutant Ninja Turtles
     (["turtle power"], "cmd_turtle_power"),
-    # Secrets of Strixhaven
     (["silverquill"], "cmd_silverquill_influence"),
     (["witherbloom"], "cmd_witherbloom_pestilence"),
     (["prismari"], "cmd_prismari_artistry"),
     (["lorehold"], "cmd_lorehold_spirit"),
     (["quandrix"], "cmd_quandrix_unlimited"),
-    # Marvel Super Heroes
     (["doom prevails"], "cmd_doom_prevails"),
     (["avengers assemble"], "cmd_avengers_assemble"),
     (["wakanda forever"], "cmd_wakanda_forever"),
     (["fantastic four"], "cmd_fantastic_four"),
-    # Reality Fracture
     (["multiverse reforged"], "cmd_multiverse_reforged"),
-    # Star Trek
     (["we are the borg", "the borg"], "cmd_we_are_the_borg"),
     (["landing party"], "cmd_landing_party"),
     (["federation fleet"], "cmd_federation_fleet"),
@@ -260,7 +250,6 @@ PRODUCT_LABELS = {
     "scene_box": "Scene Box",
     "beginner_box": "Beginner Box",
     "commander_generic": "Commander Deck (ogólny)",
-    # Konkretne talie Commander
     "cmd_calling_all_angels": "Commander Deck — Calling All Angels",
     "cmd_keen_engineering": "Commander Deck — Keen Engineering",
     "cmd_wretched_ranks": "Commander Deck — Wretched Ranks",
@@ -385,7 +374,6 @@ POLISH_STORES = [
      "urls": ["https://geekup.pl/pl/searchquery/magic+booster/1/phot/5", "https://geekup.pl/pl/searchquery/magic+commander/1/phot/5"]},
     {"name": "Gry Bez Prądu", "base_url": "https://grybezpradu.eu", "require_magic_word": True,
      "urls": ["https://grybezpradu.eu/pl/searchquery/magic+booster/1/phot/5", "https://grybezpradu.eu/pl/searchquery/magic+commander/1/phot/5"]},
-    # --- Poprawione silniki Shoper dla nowych sklepów ---
     {"name": "Gralnia.org", "base_url": "https://gralnia.org", "require_magic_word": True,
      "urls": ["https://gralnia.org/pl/searchquery/magic+booster/1/phot/5", "https://gralnia.org/pl/searchquery/magic+commander/1/phot/5"]},
     {"name": "Skład Gier", "base_url": "https://skladgier.pl", "require_magic_word": True,
@@ -453,12 +441,10 @@ def send_telegram_text(text):
 
 
 def extract_price(card_soup):
-    """Wyciąga aktualną cenę brutto produktu z pominięciem starych cen, netto, Omnibus i dostawy."""
     card_copy = BeautifulSoup(str(card_soup), "html.parser")
     for tag in card_copy.select("del, s, .old-price, .regular-price, .price-old, .omnibus, .lowest-price"):
         tag.decompose()
 
-    # 1. Priorytet: dedykowane znaczniki aktualnej ceny
     price_els = card_copy.select(
         ".current-price, .price-new, .special-price, ins .woocommerce-Price-amount, "
         ".woocommerce-Price-amount, .price, .product-price"
@@ -480,7 +466,6 @@ def extract_price(card_soup):
         if el_values:
             return min(el_values)
 
-    # 2. Fallback: tekst kafelka po wycięciu fraz Omnibus, dostawy, rat, netto i ceny za sztukę
     text = card_copy.get_text(" ", strip=True)
     text = re.sub(r"(?:najniższa cena|z 30 dni|dostawa|rata).*?\d+[.,]\d{2}\s*(?:zł|pln)", "", text, flags=re.IGNORECASE)
     text = re.sub(r"\d[\d\s\xa0]*[.,]\d{2}\s*(?:zł|pln)\s*netto", "", text, flags=re.IGNORECASE)
@@ -500,7 +485,6 @@ def extract_price(card_soup):
 
 
 def classify_product(title):
-    """Rozpoznaje dokładny typ produktu sealed oraz konkretną talię Commander Deck."""
     t = title.lower()
     is_box = ("box" in t or "display" in t)
 
@@ -525,12 +509,10 @@ def classify_product(title):
     if "prerelease" in t:
         return "prerelease"
 
-    # Najpierw sprawdzamy konkretne nazwy talii Commander Deck
     for kw_list, cmd_key in COMMANDER_DECK_KEYWORDS:
         if any(kw in t for kw in kw_list):
             return cmd_key
 
-    # Ogólny Commander Deck (gdy sklep nie podał w nazwie konkretnej talii)
     if "commander" in t:
         return "commander_generic"
 
@@ -561,7 +543,6 @@ def match_set_and_price(title, current_price):
 
 
 def parse_store_page(store_name, base_url, html, require_magic_word):
-    """Zwraca listę okazji oraz łączną liczbę znalezionych kafelków produktów na stronie."""
     soup = BeautifulSoup(html, "html.parser")
     results = []
     seen_in_page = set()
@@ -642,7 +623,6 @@ def create_http_session():
 
 
 def fetch_direct_or_scraperapi(session, url, timeout=10):
-    """Najpierw łączy się bezpośrednio za darmo; przy blokadzie IP USA używa ScraperAPI (PL)."""
     try:
         if HAS_CLOUDSCRAPER:
             res = session.get(url, timeout=timeout)
@@ -732,14 +712,15 @@ def scan_polish_stores(seen_offers):
         if offer_key in seen_offers:
             continue
 
+        clean_reason = re.sub(r"\s*\(próg:.*?\)", "", deal["reason"])
         msg = (
             f"🔥 <b>Okazja MTG Sealed — {deal['store']}!</b>\n\n"
             f"📦 <b>{deal['title']}</b>\n"
             f"💰 Cena: <b>{deal['price']:.2f} zł</b>\n"
-            f"🏷 {deal['reason']}\n\n"
+            f"🏷 {clean_reason}\n\n"
             f"🔗 <a href='{deal['url']}'>Przejdź do sklepu</a>"
         )
-        print(f"[OKAZJA] {deal['store']} | {deal['title']} | {deal['price']} zł")
+        print(f"[OKAZJA] {deal['store']} | {deal['title']} | {deal['price']} zł | {deal['reason']}")
         if send_telegram_text(msg):
             seen_offers.add(offer_key)
             new_found += 1
