@@ -456,18 +456,17 @@ PRODUCT_LABELS = {
 POLISH_STORES = [
     {"name": "Strefa MTG", "base_url": "https://strefamtg.pl", "require_magic_word": False,
      "urls": [
-         "https://strefamtg.pl/szukaj?controller=search&s=booster",
-         "https://strefamtg.pl/szukaj?controller=search&s=commander",
-         "https://strefamtg.pl/szukaj?controller=search&s=bundle",
-         "https://strefamtg.pl/szukaj?controller=search&s=foundations",
-         "https://strefamtg.pl/szukaj?controller=search&s=draft+night",
+         "https://strefamtg.pl/4-magic-the-gathering?resultsPerPage=160",
+         "https://strefamtg.pl/4-magic-the-gathering?resultsPerPage=160&page=2",
+         "https://strefamtg.pl/4-magic-the-gathering?resultsPerPage=160&page=3",
+         "https://strefamtg.pl/4-magic-the-gathering?resultsPerPage=160&page=4",
      ]},
     {"name": "Centrum MTG", "base_url": "https://www.centrum-mtg.com.pl", "require_magic_word": False,
      "urls": [
          "https://www.centrum-mtg.com.pl/magic-the-gathering",
          "https://www.centrum-mtg.com.pl/magic-the-gathering?page=2",
      ]},
-    {"name": "Time4Magic", "base_url": "https://time4magic.pl", "require_magic_word": True,
+    {"name": "Time4Magic", "base_url": "https://time4magic.pl", "require_magic_word": False,
      "urls": [
          "https://time4magic.pl/pl/c/Nauctis-The-Sunken-Realm/181",
          "https://time4magic.pl/star-trek-magic-the-gathering",
@@ -495,7 +494,7 @@ POLISH_STORES = [
          "https://sklep.merfolk.pl/category/GOTOWE-TALIE-MTG-343882#OfertaProduktowa",
          "https://sklep.merfolk.pl/category/ZESTAWY-KART-MTG-343880#OfertaProduktowa",
      ]},
-    {"name": "Dragonus", "base_url": "https://dragonus.pl", "require_magic_word": True,
+    {"name": "Dragonus", "base_url": "https://dragonus.pl", "require_magic_word": False,
      "urls": [
          "https://dragonus.pl/pl/searchquery/magic+booster/1/phot/5",
          "https://dragonus.pl/pl/searchquery/magic+commander/1/phot/5",
@@ -588,7 +587,7 @@ POLISH_STORES = [
          "https://flamberg.com.pl/pl/menu/magic-the-gathering-252?counter=1",
          "https://flamberg.com.pl/pl/menu/magic-the-gathering-252",
      ]},
-    {"name": "Rebel.pl", "base_url": "https://www.rebel.pl", "require_magic_word": True,
+    {"name": "Rebel.pl", "base_url": "https://www.rebel.pl", "require_magic_word": False,
      "urls": [
          "https://www.rebel.pl/karcianki/55-magic-the-gathering?availability=in-stock&path=7093,the-hobbit",
          "https://www.rebel.pl/karcianki/55-magic-the-gathering?availability=in-stock&path=6936,lorwyn-eclipsed",
@@ -598,7 +597,7 @@ POLISH_STORES = [
          "https://www.rebel.pl/karcianki/55-magic-the-gathering?availability=in-stock&path=6935,teenage-mutant-ninja-turtles",
          
      ]},
-    {"name": "Mepel.pl", "base_url": "https://mepel.pl", "require_magic_word": True,
+    {"name": "Mepel.pl", "base_url": "https://mepel.pl", "require_magic_word": False,
      "urls": [
          "https://mepel.pl/magic-the-gathering-gra-karciana",
          "https://mepel.pl/magic-the-gathering-gra-karciana/2",
@@ -606,24 +605,24 @@ POLISH_STORES = [
          "https://mepel.pl/magic-the-gathering-gra-karciana/4",
          "https://mepel.pl/magic-the-gathering-gra-karciana/5",
      ]},
-    {"name": "Aleplanszówki", "base_url": "https://aleplanszowki.pl", "require_magic_word": True,
+    {"name": "Aleplanszówki", "base_url": "https://aleplanszowki.pl", "require_magic_word": False,
      "urls": [
          "https://aleplanszowki.pl/603-magic-the-gathering",
          "https://aleplanszowki.pl/603-magic-the-gathering?page=2"
          "https://aleplanszowki.pl/603-magic-the-gathering?page=3",
      ]},
-    {"name": "3Trolle", "base_url": "https://3trolle.pl", "require_magic_word": True,
+    {"name": "3Trolle", "base_url": "https://3trolle.pl", "require_magic_word": False,
      "urls": [
          "https://3trolle.pl/66-magic-the-gathering-tcg",
      ]},
-    {"name": "Vanaheim", "base_url": "https://vanaheim.pl", "require_magic_word": True,
+    {"name": "Vanaheim", "base_url": "https://vanaheim.pl", "require_magic_word": False,
      "urls": [
          "https://vanaheim.pl/pl/2294-boostery",
          "https://vanaheim.pl/pl/2295-booster-box",
          "https://vanaheim.pl/pl/2296-bundle-i-zestawy",
          "https://vanaheim.pl/pl/1081-mtg-commander",
      ]},
-    {"name": "Wargamer", "base_url": "https://sklep.wargamer.pl", "require_magic_word": True,
+    {"name": "Wargamer", "base_url": "https://sklep.wargamer.pl", "require_magic_word": False,
      "urls": [
          "https://sklep.wargamer.pl/pl/483-final-fantasy",
          "https://sklep.wargamer.pl/pl/482-marvel-s-spider-man",
@@ -635,23 +634,23 @@ POLISH_STORES = [
          "https://sklep.wargamer.pl/pl/555-the-hobbit",
          "https://sklep.wargamer.pl/pl/571-star-trek",
      ]},
-    {"name": "RGFK.pl", "base_url": "https://rgfk.pl", "require_magic_word": True,
+    {"name": "RGFK.pl", "base_url": "https://rgfk.pl", "require_magic_word": False,
      "urls": [
          "https://rgfk.pl/k/52418/karty-mtg?order=product.sales.desc",
          "https://rgfk.pl/k/52418/karty-mtg?order=product.sales.desc&page=2",
          "https://rgfk.pl/k/52418/karty-mtg?order=product.sales.desc&page=3",
      ]},
-    {"name": "Gry Bez Prądu", "base_url": "https://grybezpradu.eu", "require_magic_word": True,
+    {"name": "Gry Bez Prądu", "base_url": "https://grybezpradu.eu", "require_magic_word": False,
      "urls": [
          "https://grybezpradu.eu/magic-the-gathering-tcg",
      ]},
-    {"name": "Skład Gier", "base_url": "https://skladgier.pl", "require_magic_word": True,
+    {"name": "Skład Gier", "base_url": "https://skladgier.pl", "require_magic_word": False,
      "urls": [
          "https://skladgier.pl/collections/mtg-boostery",
          "https://skladgier.pl/collections/mtg-booster-boxy",
          "https://skladgier.pl/collections/mtg-decki",
      ]},
-    {"name": "Planszolek", "base_url": "https://planszolek.pl", "require_magic_word": True,
+    {"name": "Planszolek", "base_url": "https://planszolek.pl", "require_magic_word": False,
      "urls": [
          "https://www.planszolek.pl/pl/c/Bundle-Pack/211",
          "https://www.planszolek.pl/pl/c/Inne-Zestawy/270",
@@ -663,11 +662,11 @@ POLISH_STORES = [
          "https://www.planszolek.pl/pl/c/Commander-Decki/49/2",
          "https://www.planszolek.pl/pl/c/Gotowe-Talie/50",
      ]},
-    {"name": "Bluegames", "base_url": "https://bluegames.pl", "require_magic_word": True,
+    {"name": "Bluegames", "base_url": "https://bluegames.pl", "require_magic_word": False,
      "urls": [
          "https://bluegames.pl/gry-karciane-tcg/magic-the-gathering",
      ]},
-    {"name": "TCGlove", "base_url": "https://www.tcglove.pl", "require_magic_word": True,
+    {"name": "TCGlove", "base_url": "https://www.tcglove.pl", "require_magic_word": False,
      "urls": [
          "https://www.tcglove.pl/mtg-star-trek-universes-beyond",
          "https://www.tcglove.pl/mtg-reality-fracture",
@@ -676,6 +675,50 @@ POLISH_STORES = [
          "https://www.tcglove.pl/magic-final-fantasy",
          "https://www.tcglove.pl/mtg-marvel-super-heroes",
      ]},
+    {"name": "Hobbity.pl", "base_url": "https://hobbity.pl/gry-karciane-kolekcjonerskie/magic-the-gathering", "require_magic_word": False,
+     "urls": [
+         "https://hobbity.pl/gry-karciane-kolekcjonerskie/magic-the-gathering",
+         "https://hobbity.pl/gry-karciane-kolekcjonerskie/magic-the-gathering?page=2",
+         "https://hobbity.pl/gry-karciane-kolekcjonerskie/magic-the-gathering?page=3",
+         "https://hobbity.pl/gry-karciane-kolekcjonerskie/magic-the-gathering?page=4",
+         "https://hobbity.pl/gry-karciane-kolekcjonerskie/magic-the-gathering?page=5",
+         "https://hobbity.pl/gry-karciane-kolekcjonerskie/magic-the-gathering?page=6",
+         "https://hobbity.pl/gry-karciane-kolekcjonerskie/magic-the-gathering?page=7",
+         "https://hobbity.pl/gry-karciane-kolekcjonerskie/magic-the-gathering?page=8",
+     ]},
+    {"name": "MagicznyRynek", "base_url": "https://magicznyrynek.pl/collections/magic-the-gathering/sealed/", "require_magic_word": False,
+     "urls": [
+         "https://magicznyrynek.pl/collections/magic-the-gathering/sealed/",
+         "https://magicznyrynek.pl/collections/magic-the-gathering/sealed/?stock=in-stock&page=2",
+         "https://magicznyrynek.pl/collections/magic-the-gathering/sealed/?stock=in-stock&page=3",
+         "https://magicznyrynek.pl/collections/magic-the-gathering/sealed/?stock=in-stock&page=4",
+     ]},
+     {"name": "MagicCafe", "base_url": "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/", "require_magic_word": False,
+     "urls": [
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=2",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=3",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=4",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=5",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=6",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=7",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=8",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=9",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=10",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=11",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=12",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=13",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=14",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=15",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=16",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=17",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=18",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=19",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=20",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=21",
+         "https://magiccafe.eu/product-category/gry-karciane/magic-the-gathering-pl/?jsf=jet-woo-products-grid&pagenum=22",
+     ]},
+         
 ]
 
 BLACKLIST_WORDS = [
