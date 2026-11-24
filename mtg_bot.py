@@ -938,7 +938,8 @@ def create_http_session():
     return session
 
 
-def fetch_direct_or_scraperapi(session, url, timeout=10):
+def fetch_direct_or_scraperapi(session, url, timeout=20):
+    """Najpierw łączy się bezpośrednio za darmo; przy blokadzie IP USA używa ScraperAPI (PL)."""
     try:
         if HAS_CLOUDSCRAPER:
             res = session.get(url, timeout=timeout)
@@ -961,7 +962,7 @@ def fetch_direct_or_scraperapi(session, url, timeout=10):
             "url": url,
             "country_code": "pl",
         }
-        res = requests.get("https://api.scraperapi.com/", params=api_params, timeout=20)
+        res = requests.get("https://api.scraperapi.com/", params=api_params, timeout=35)
         if res.status_code == 200:
             res.encoding = res.apparent_encoding or "utf-8"
             return res, "scraperapi"
@@ -983,7 +984,7 @@ def scan_single_store(store):
     store_deals = []
 
     for url in store["urls"]:
-        res, mode = fetch_direct_or_scraperapi(session, url, timeout=10)
+        res, mode = fetch_direct_or_scraperapi(session, url, timeout=20)
         if not res or res.status_code != 200:
             continue
 
